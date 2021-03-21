@@ -103,7 +103,7 @@ def left():
     cube[Sides.back, 2, :] = cube[Sides.bottom, 2, :]
     cube[Sides.bottom, 2, :] = tmp
    
-   '''
+    '''
     print('Front')
     print(cube[Sides.front,:,:])
     print('-'*20)
@@ -153,29 +153,37 @@ def left_counter():
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 
 def up():
-    tmp = np.array(cube[Sides.front, :, 0])
-    cube[Sides.front, :, 2] = cube[Sides.right, :, 2]
-    cube[Sides.right, :, 2] = cube[Sides.back, :, 2]
-    cube[Sides.back, :, 2] = cube[Sides.left, :, 2]
-    cube[Sides.left, :, 0] = tmp
-
-    cube[Sides.top, :, :] = np.rot90(cube[Sides.top, :, :], -1)
+    tmp = np.array(cube[Sides.front, :, 2])
+    cube[Sides.front, :, 2] = cube[Sides.left, :, 2]
+    cube[Sides.left, :, 2] = cube[Sides.back, :, 2]
+    cube[Sides.back, :, 2] = cube[Sides.right, :, 2]
+    cube[Sides.right, :, 2] = tmp
+    
+    cube[Sides.top, :, :] = np.rot90(cube[Sides.top, :, :])
     return "U"
 
 
 def up_counter():
     tmp = np.array(cube[Sides.front, :, 0])
-    cube[Sides.front, :, 2] = cube[Sides.left, :, 2]
-    cube[Sides.left, :, 2] = cube[Sides.back, :, 2]
-    cube[Sides.back, :, 2] = cube[Sides.right, :, 2]
-    cube[Sides.right, :, 0] = tmp
-
-    cube[Sides.top, :, :] = np.rot90(cube[Sides.top, :, :])
+    cube[Sides.front, :, 2] = cube[Sides.right, :, 2]
+    cube[Sides.right, :, 2] = cube[Sides.back, :, 2]
+    cube[Sides.back, :, 2] = cube[Sides.left, :, 2]
+    cube[Sides.left, :, 2] = tmp
+   
+    cube[Sides.top, :, :] = np.rot90(cube[Sides.top, :, :], -1)
     return "U'"
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 
 def down():
+    tmp = np.array(cube[Sides.front, :, 0])
+    cube[Sides.front, :, 0] = cube[Sides.right, :, 0]
+    cube[Sides.right, :, 0] = cube[Sides.back, :, 0]
+    cube[Sides.back, :, 0] = cube[Sides.left, :, 0]
+    cube[Sides.left, :, 0] = tmp
+
+    cube[Sides.bottom, :, :] = np.rot90(cube[Sides.bottom, :, :])
+    '''
     tmp = np.array(cube[Sides.front, :, 0])
     cube[Sides.front, :, 0] = cube[Sides.left, :, 0]
     cube[Sides.left, :, 0] = cube[Sides.back, :, 0]
@@ -183,15 +191,25 @@ def down():
     cube[Sides.right, :, 0] = tmp
 
     cube[Sides.bottom, :, :] = np.rot90(cube[Sides.bottom, :, :], -1)
+    '''
     return "D"
 
 
 def down_counter():
+    '''
     tmp = np.array(cube[Sides.front, :, 0])
     cube[Sides.front, :, 0] = cube[Sides.right, :, 0]
     cube[Sides.right, :, 0] = cube[Sides.back, :, 0]
     cube[Sides.back, :, 0] = cube[Sides.left, :, 0]
     cube[Sides.left, :, 0] = tmp
+    '''
+    tmp = np.array(cube[Sides.front, :, 0])
+    cube[Sides.front, :, 0] = cube[Sides.left, :, 0]
+    cube[Sides.left, :, 0] = cube[Sides.back, :, 0]
+    cube[Sides.back, :, 0] = cube[Sides.right, :, 0]
+    cube[Sides.right, :, 0] = tmp
+
+    #cube[Sides.bottom, :, :] = np.rot90(cube[Sides.bottom, :, :], -1)
 
     cube[Sides.bottom, :, :] = np.rot90(cube[Sides.bottom, :, :])
     return "D'"
