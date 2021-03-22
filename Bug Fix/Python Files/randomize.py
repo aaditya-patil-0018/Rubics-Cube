@@ -10,8 +10,12 @@ def randomization():
     time.sleep(2)
     for number in range(x):
         i = random.choice(method_list)
-        print(method_list)
-        print(i)
+        ml = []
+        for method in method_list:
+            ml.append(str(method))
+        print(ml)
+        i()
+        print(str(i))
 
     return
 randomization()

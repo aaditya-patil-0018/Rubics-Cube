@@ -1,9 +1,9 @@
 import gui
-#import randomize
+import randomize
 import cubemesh
-#randomize.randomization()
+randomize.randomization()
 print("\n-------------------------\n")
 print("Current cubemesh: \n")
-cubemesh.debug()
+#cubemesh.debug()
 print("\n-------------------------\n")
 gui.drawing()
